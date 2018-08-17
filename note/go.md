@@ -957,3 +957,11 @@ fmt.Println(m) // map[hobby:sleep age:26]
 ### iota
 
 自增, 从0开始.
+
+### _
+
+用来省略变量
+
+### range
+
+遍历数组.
