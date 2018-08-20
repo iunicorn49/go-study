@@ -10,7 +10,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="map例题.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/firstGoProject/base-demo/Map/map例题.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" column="9" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -30,6 +40,7 @@
         <option value="$PROJECT_DIR$/firstGoProject/base-demo/数组/数组切片.go" />
         <option value="$PROJECT_DIR$/firstGoProject/base-demo/数组/切片的操作.go" />
         <option value="$PROJECT_DIR$/firstGoProject/base-demo/Map/基础map.go" />
+        <option value="$PROJECT_DIR$/firstGoProject/base-demo/Map/map例题.go" />
       </list>
     </option>
   </component>
@@ -42,10 +53,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1000" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="938" />
     <option name="y" value="23" />
-    <option name="width" value="678" />
+    <option name="width" value="740" />
     <option name="height" value="934" />
   </component>
   <component name="ProjectView">
@@ -53,7 +64,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -83,6 +93,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -106,7 +117,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Build.go build 基础map.go">
+  <component name="RunManager" selected="Go Build.go build map例题.go">
     <configuration name="go build 变量.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="src" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -147,6 +158,14 @@
       <filePath value="$PROJECT_DIR$/firstGoProject/base-demo/Map/基础map.go" />
       <directory value="$PROJECT_DIR$/" />
     </configuration>
+    <configuration name="go build map例题.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="src" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/firstGoProject/base-demo/Map/map例题.go" />
+      <directory value="$PROJECT_DIR$/" />
+    </configuration>
     <configuration name="go build test.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="src" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -167,9 +186,11 @@
       <item itemvalue="Go Build.go build test.go" />
       <item itemvalue="Go Build.go build 变量.go" />
       <item itemvalue="Go Build.go build 基础map.go" />
+      <item itemvalue="Go Build.go build map例题.go" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build map例题.go" />
         <item itemvalue="Go Build.go build 基础map.go" />
         <item itemvalue="Go Build.go build 变量.go" />
         <item itemvalue="Go Build.go build test.go" />
@@ -177,12 +198,13 @@
     </recent_temporary>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1000" y="23" width="678" height="934" extended-state="0" />
+    <frame x="0" y="23" width="1678" height="934" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32906976" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
@@ -196,7 +218,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,6 +318,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/firstGoProject/base-demo/Map/map例题.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="9" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="9" />
         </state>
       </provider>
     </entry>

@@ -948,6 +948,10 @@ fmt.Println(m) // map[hobby:sleep age:26]
 - map 使用 哈希表, 必须可以比较相等
 - 除了 slice, map, function 的内建类型都可以当key, 因为他们无法判断相等
 
+### 例题
+
+
+
 ## 其他
 
 ### panic
