@@ -5,6 +5,33 @@
 1. 字符串或者引入的包名, 都需要用 **双引号** .
 2. 可以通过 **_** 省略变量.
 
+## 包
+
+> GO语言内置API, 各种工具库.
+
+### fmt
+
+> 各种打印输出.
+
+### strings
+
+> 字符串相关方法.
+
+- Fields
+- Split
+- Join
+- Contains
+- Index
+- ToLower
+- ToUpper
+- Trim
+- TrimRight
+- TrimLeft
+
+### utf8
+
+> 一般处理中文会用到.
+
 ## 变量
 
 ###声明变量
@@ -103,9 +130,9 @@ func main() {
 - (u)int64
 - (u)uintptr
 
-> 不加 (u) 直接用 int 就是无符号整数.
+> 不加 (u) 直接用 int 就是有符号整数(负数).
 >
-> 用了 (u) 是有符号整数, 声明时可以携带长度.
+> 用了 (u) 是无符号整数, 声明时可以携带长度.
 >
 > (u)int 的长度跟着操作系统走.
 >
@@ -438,6 +465,8 @@ func main() {
 
 ## 函数
 
+> 在GO语言中, 函数式一等类型(first-class). 这意味着, 我们可以把函数作为值来传递和使用. GO语言的函数可以一次性返回多个结果.
+
 基本写法
 
 ```go
@@ -765,6 +794,44 @@ fmt.Println(arr, s)
 s = append(s, 55)
 fmt.Println(arr, s) // [0 1 2 55 4] [1 2 55]
 // 直接在切片上append元素时,会影响原始数组
+
+func sliceAppend () {
+	arr := [...]int{1,2,3,4,5,6,7,8,9,10}
+	s := arr[4:6:8] // [5,6] slice 第三个参数, 限定 cap 的上限
+	length := len(s) // 2 含头不含尾
+	capacity := cap(s) // 4 声明 slice 的时候, 第三个参数限制了 cap 的长度, 所以, cap 的长度是 第4位到第8位(不包含最后一位, 4,5,6,7 总计是4)
+	fmt.Println("slice:", s,"length:", length, "capacity:", capacity)
+	// slice: [5 6] length: 2 capacity: 4
+	fmt.Println()
+	s = s[:4] // [5 6 7 8] capacity为4, 可以拓展至这么多, 如果改成5会报错
+	s = append(s, 11, 12, 13)
+	// 但是可以通过append方法突破capacity的限制 [5 6 7 8 11 12 13]
+	// 原理: 一旦拓展操作超出了被操作的切片值的容量, 那么该切片的底层数组会被自动替换.
+	fmt.Println("slice:", s,"length:", len(s), "capacity:", cap(s))
+	// slice: [5 6 7 8 11 12 13] length: 7 capacity: 8
+	fmt.Println()
+	s = append(s, 21, 22, 23, 24, 25)
+	fmt.Println("slice:", s,"length:", len(s), "capacity:", cap(s))
+	// slice: [5 6 7 8 11 12 13 21 22 23 24 25] length: 12 capacity: 16
+	// capacity会自动翻倍拓展
+}
+```
+
+#### copy复制元素
+
+```go
+func sliceCopy () {
+	arr := [...]int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	s := arr[:5]
+	s2 := []int{0,0,0}
+	fmt.Println("s:", s) // s: [1 2 3 4 5]
+	fmt.Println("s2:", s2) // s2: [0 0 0]
+	copy(s, s2) // 把第二个参数中的元素复制到第一个参数中相应的位置.
+	fmt.Println("s:", s) // s: [0 0 0 4 5]
+	fmt.Println("s2:", s2) // s2: [0 0 0]
+	// 被赋值的元素的个数总等于长度较短的那个参数值的长度.
+	// copy方法会直接对第一个参数进行修改.
+}
 ```
 
 ### 案例
@@ -948,9 +1015,46 @@ fmt.Println(m) // map[hobby:sleep age:26]
 - map 使用 哈希表, 必须可以比较相等
 - 除了 slice, map, function 的内建类型都可以当key, 因为他们无法判断相等
 
-### 例题
+## Channel(通道类型)
 
+> Channel是GO语言中一种非常独特的数据结构. 它可用于不同Goroutine之间传递类型化的数据, 并且是并发安全的. 相比之下, 我们之前介绍的那些数据类型都不是并发安全的. 这一点需要特别注意.
+>
+> Goroutine(也成为GO程序)可以被看做是承载可被并发执行的代码块的载体. 它们由Go语言的运行时系统调度, 并依托操作系统线程(又称内核线程)来并发地执行其中的代码块.
+>
+> 与其他的数据类型不同, 我们无法表示一个通道类型的值. 因此, 我们也无法用字面量来为通道类型的变量赋值. 我们只能通过调用内建函数 `make` 来达到目的. `make` 函数可以接受两个参数. 第一个参数代表了将被初始化的值的类型的字面量(这边的情况是 chan int), 第二个参数是长度. 例如, 初始化一个长度为5的元素类型为int的通道, 需要 `make(chan int, 5)` . make函数也可以初始化切片类型与字典类型的值.
+>
+> 确切的说, 通道值的长度应该被称为其缓存的尺寸. 换句话说, 它代表着通道值中可以暂存的数据的个数. 注意, 暂存在通道值中的数据时先进先出的.
 
+```go
+// 缓冲通道
+ch := make(chan int, 5)
+ch <- 1 // 给通道发送数据
+ch <- 2 // 给通道发送数据
+s, ok := <- ch // 从通道获取数据
+fmt.Println(s) // 1
+```
+
+> 通道有带缓冲和非缓冲之分. 缓冲通道可以缓存N个数据. 初始化一个通道值的时候必须指定这个N. 相对的, 非缓冲通道不会缓存任何数据. 发送方在向通道值发送数据的时候回立即被阻塞, 知道某一个接收方已从该通道值中接收了这条数据. 
+
+```go
+// 非缓冲通道
+ch := make(chan int, 0)
+```
+
+```go
+// 通道都是双向的, 如要变成单向通道, 需要下面的写法
+type Sender chan<- int
+// 接收操作符 <- 放在了关键字 chan 的右边.
+// 这种就是发送数据的通道.
+
+type Receiver <-chan int
+// 这种写法代表了, 一个只可从中接收数据的单向通道类型. 这样的通道也被称为接收通道.
+// 关键字 chan 左边的接收操作符 <- 形象地表示出了数据的流向.
+
+var myChannel = make(chan int, 3)
+var sender Sender = myChannel
+var receiver Receiver = myChannel
+```
 
 ## 其他
 
